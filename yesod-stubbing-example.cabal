@@ -1,0 +1,46 @@
+cabal-version: 2.4
+name:          yesod-stubbing-example
+version:       0.1.0
+build-type:    Simple
+
+library
+  exposed-modules:  Application
+  hs-source-dirs:   src
+  default-language: Haskell2010
+  build-depends:
+    , base   >=4.9.1.0 && <5
+    , random
+    , yesod
+
+  ghc-options:
+    -Wall -Werror -fwarn-tabs -Wincomplete-uni-patterns
+    -Wincomplete-record-updates -Widentities -Wredundant-constraints
+    -Wcpp-undef -Wno-type-defaults -O2
+    -Wunused-packages
+
+executable yesod-stubbing-example
+  main-is:          main.hs
+  hs-source-dirs:   app
+  ghc-options:      -threaded -rtsopts -with-rtsopts=-N
+  default-language: Haskell2010
+  build-depends:
+    , base                    >=4.9.1.0 && <5
+    , yesod-stubbing-example
+
+test-suite test
+  type:             exitcode-stdio-1.0
+  main-is:          Spec.hs
+  hs-source-dirs:   test
+  ghc-options:      -Wall -threaded -rtsopts -with-rtsopts=-N
+  other-modules:
+    ApplicationSpec
+    TestImport
+
+  default-language: Haskell2010
+  build-depends:
+    , base                    >=4.8.2.0
+    , classy-prelude          >=0.10.2
+    , hspec                   >=2.7.10
+    , yesod-core              >=1.6.20.2
+    , yesod-stubbing-example
+    , yesod-test

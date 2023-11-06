@@ -1,0 +1,6 @@
+*.hi
+*.o
+.DS_Store
+*.aes
+.hie/
+result
